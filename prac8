@@ -1,0 +1,34 @@
+1)Map Coloring/Constraint Satisfaction Problem:
+
+import itertools
+
+variables = ["A", "B", "C", "D"]
+colors = ["Red", "Blue", "Yellow", "Green"]
+
+all_assignment = itertools.product(colors, repeat=len(variables))
+
+
+def valid(i):
+    A, B, C, D = i
+
+    return (
+        (A != B)
+        and (B != C)
+        and (A != C)
+        and (A != D)
+    )
+
+
+solutions = []
+
+for i in all_assignment:
+    if valid(i):
+        solutions.append(dict(zip(variables, i)))
+
+
+print("Variables coloring of the map:")
+
+for sol in solutions:
+    print(sol)
+
+
